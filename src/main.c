@@ -23,7 +23,7 @@ int sheller_builtin_fn_check(char **args)
     {
         return 1;
     }
-
+  
     for (i = 0; i < sheller_num_builtins(); i++)
     {
         if (strcmp(args[0], builtin_str[i]) == 0)
@@ -34,7 +34,7 @@ int sheller_builtin_fn_check(char **args)
 
     return sheller_launch(args);
 }
-
+ 
 int sheller_launch(char **args)
 {
     pid_t pid, wpid;
@@ -55,7 +55,7 @@ int sheller_launch(char **args)
         //error forking
         perror("sheller: unable to fork");
     }
-    else
+    else 
     {
         //parent process
         do

@@ -1,7 +1,23 @@
-#include <stdio.h>
-#include <stdlib.h>
+#ifndef SHELLER_BUILTIN_H
+#define SHELLER_BUILTIN_H
 
-#include "builtin.h"
+#include <unistd.h>
+
+int sheller_cd(char **args);
+int sheller_help(char **args);
+int sheller_exit(char **args);
+
+char *builtin_str[] = {"cd", "help", "exit"};
+int (*builtin_func[])(char **) = {
+    &sheller_cd,
+    &sheller_help,
+    &sheller_exit};
+
+int sheller_num_builtins()
+{
+    return sizeof(builtin_str) / sizeof(char *);
+}
+
 
 int sheller_cd(char **args)
 {
@@ -30,7 +46,7 @@ int sheller_help(char **args)
     {
         printf(" %s\n", builtin_str[i]);
     }
-    printf("Use the man command for more info");
+    printf("Use the man command for more info\n");
     return 1;
 }
 
@@ -38,3 +54,5 @@ int sheller_exit(char **args)
 {
     return 0;
 }
+
+#endif
