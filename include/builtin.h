@@ -4,8 +4,8 @@
 #include <unistd.h>
 
 int sheller_cd(char **args);
-int sheller_help(char **args);
-int sheller_exit(char **args);
+int sheller_help();
+int sheller_exit();
 
 char *builtin_str[] = {"cd", "help", "exit"};
 int (*builtin_func[])(char **) = {
@@ -36,7 +36,7 @@ int sheller_cd(char **args)
     return 1;
 }
 
-int sheller_help(char **args)
+int sheller_help()
 {
     int i;
     printf("David's Sheller\n");
@@ -50,7 +50,7 @@ int sheller_help(char **args)
     return 1;
 }
 
-int sheller_exit(char **args)
+int sheller_exit()
 {
     return 0;
 }

@@ -6,6 +6,7 @@
 #include <sys/wait.h>
 
 #include "builtin.h"
+#include "events.h"
 
 #define SHELLER_BUFFER_SIZE 1024
 #define SHELLER_TOK_BUFFER_SIZE 64
@@ -142,7 +143,7 @@ void sheller_command_loop(void)
 
 int main(int argc, char **argv)
 {
-
+    register_handlers();
     sheller_command_loop();
 
     return EXIT_SUCCESS;
