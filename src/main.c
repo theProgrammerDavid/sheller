@@ -7,6 +7,7 @@
 
 #include "builtin.h"
 #include "events.h"
+#include "format.h"
 
 #define SHELLER_BUFFER_SIZE 1024
 #define SHELLER_TOK_BUFFER_SIZE 64
@@ -24,7 +25,7 @@ int sheller_builtin_fn_check(char **args)
     {
         return 1;
     }
-  
+
     for (i = 0; i < sheller_num_builtins(); i++)
     {
         if (strcmp(args[0], builtin_str[i]) == 0)
@@ -35,7 +36,7 @@ int sheller_builtin_fn_check(char **args)
 
     return sheller_launch(args);
 }
- 
+
 int sheller_launch(char **args)
 {
     pid_t pid, wpid;
@@ -56,7 +57,7 @@ int sheller_launch(char **args)
         //error forking
         perror("sheller: unable to fork");
     }
-    else 
+    else
     {
         //parent process
         do
@@ -131,7 +132,9 @@ void sheller_command_loop(void)
 
     do
     {
-        printf("> ");
+        // printf("$heller > ");
+        print_color_text(SHELLER_TEXT_RED, "Sheller> ");
+
         line = sheller_read_line();
         args = sheller_split_line(line);
         status = sheller_builtin_fn_check(args);
