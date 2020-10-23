@@ -5,4 +5,6 @@
 
 ### Installation
 
-- use ``make`` to build the application
+- ``make init`` to setup directories
+- ``make`` to build the application
+- ``make run`` to run the application
